@@ -4,8 +4,10 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '.';
 import { HeaderButton } from '../components/HeaderButton';
 import { TabBarIcon } from '../components/TabBarIcon';
-import One from '../screens/one';
-import Two from '../screens/two';
+import HomeScreen from '../screens/home';
+import ChatScreen from '../screens/chat';
+import DailyChallengesScreen from '../screens/daily_challenges';
+import AccountScreen from '../screens/account';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,20 +20,33 @@ export default function TabLayout({ navigation }: Props) {
         tabBarActiveTintColor: 'black',
       }}>
       <Tab.Screen
-        name="One"
-        component={One}
+        name="Home"
+        component={HomeScreen}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => <HeaderButton onPress={() => navigation.navigate('Modal')} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerRight: () => <HeaderButton onPress={() => navigation.navigate('Notification')} />,
         }}
       />
       <Tab.Screen
-        name="Two"
-        component={Two}
+        name="Chat"
+        component={ChatScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="comment" color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Desafios"
+        component={DailyChallengesScreen}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Conta"
+        component={AccountScreen}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          headerRight: () => <HeaderButton onPress={() => navigation.navigate('Notification')} />,
         }}
       />
     </Tab.Navigator>
